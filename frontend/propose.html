@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenCare - Proposer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌱 GreenCare</h1>
+        <nav>
+            <a href="index.html">Actions</a>
+            <a href="propose.html">Proposer</a>
+            <a href="dashboard.html">Impact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Nouvelle Action RSE</h2>
+            <form onsubmit="submitAction(event)">
+                <label>Titre de l'action</label>
+                <input type="text" id="title" required placeholder="Ex: Extinction PC Radiologie">
+                
+                <label>Description</label>
+                <textarea id="desc" required placeholder="Détails de l'action..."></textarea>
+                
+                <label>Service concerné</label>
+                <select id="service">
+                    <option value="BLOC">Bloc Opératoire</option>
+                    <option value="URG">Urgences</option>
+                    <option value="RADIO">Imagerie / Radio</option>
+                    <option value="ADM">Administratif</option>
+                    <option value="LOG">Logistique</option>
+                </select>
+
+                <label>Catégorie</label>
+                <select id="cat">
+                    <option value="Energie">Énergie / Fluides</option>
+                    <option value="Dechets">Déchets / DASRI</option>
+                    <option value="Numerique">Numérique Responsable</option>
+                    <option value="Social">QVT / Social</option>
+                </select>
+
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

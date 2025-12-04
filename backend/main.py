@@ -1,15 +1,15 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles  # <-- Ajout
 from backend.db import engine, Base, SessionLocal
 from backend.models import ActionDB
 from backend.routes import router
-
 # Création des tables (Mode bourrin pour POC, en prod on utilise Alembic)
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="GreenCare API",
     description="API Module RSE - Numih",
-    version="0.1.0"
+    version="0.2.0"
 )
 
 app.include_router(router, prefix="/api")
@@ -37,6 +37,14 @@ def seed_data():
 # Lancer le seed au démarrage
 seed_data()
 
+# montage des fichiers statiques(front)
+# accessible via 8000 port
+app.mount("/app",StaticFiles(directory="frontend", html=True), name="frontend")
+
+
 @app.get("/")
 async def root():
-    return {"message": "GreenCare API is running", "status": "healthy"}
+    return {
+        "message": "GreenCare API is running", 
+        "ui_url": "http://localhost:8000/app/"
+    }

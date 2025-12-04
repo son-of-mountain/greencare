@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCare - Actions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌱 GreenCare</h1>
+        <nav>
+            <a href="index.html">Actions</a>
+            <a href="propose.html">Proposer</a>
+            <a href="dashboard.html">Impact</a>
+        </nav>
+        <div style="margin-top:10px; font-size:0.9em;">
+            Mon rôle : 
+            <select id="user-role" style="width:auto; display:inline-block; margin:0; padding:2px;">
+                <option value="soignant">Soignant (x1.5)</option>
+                <option value="cadre">Cadre (x1.0)</option>
+                <option value="direction">Direction (x0.8)</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Actions Prioritaires</h2>
+        <div id="actions-list">Chargement...</div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>loadActions();</script>
+</body>
+</html>

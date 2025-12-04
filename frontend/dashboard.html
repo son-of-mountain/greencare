@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenCare - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🌱 GreenCare</h1>
+        <nav>
+            <a href="index.html">Actions</a>
+            <a href="propose.html">Proposer</a>
+            <a href="dashboard.html">Impact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Tableau de Bord d'Impact</h2>
+        <p>Indicateurs en temps réel (Données simulées pour étape 3)</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div class="card" style="text-align:center;">
+                <h3>Énergie Économisée</h3>
+                <div class="score">1,240 kWh</div>
+                <small>-15% vs N-1</small>
+            </div>
+            <div class="card" style="text-align:center;">
+                <h3>DASRI Évités</h3>
+                <div class="score">450 kg</div>
+                <small>Soit ~1300€ économisés</small>
+            </div>
+            <div class="card" style="text-align:center;">
+                <h3>Actions Validées</h3>
+                <div class="score">12</div>
+                <small>Sur 28 proposées</small>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>Export Open Data</h3>
+            <p>Télécharger les données d'impact pour analyse tierce.</p>
+            <button disabled>Télécharger .CSV (Bientôt)</button>
+        </div>
+    </div>
+</body>
+</html>
