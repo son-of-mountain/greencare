@@ -15,21 +15,25 @@ app = FastAPI(
 app.include_router(router, prefix="/api")
 
 # --- SEED DATA (Données de test) ---
+# ... imports inchangés ...
+
+# Dans seed_data :
 def seed_data():
     db = SessionLocal()
     if db.query(ActionDB).count() == 0:
-        print("🌱 Seeding database...")
+        print("🌱 Seeding database with Scoring V2...")
         actions = [
-            ActionDB(title="Écrans Bloc Opératoire", description="Extinction auto des écrans du bloc de 22h à 6h.", service_id="BLOC", category="Energie", score=10),
-            ActionDB(title="Tri DASRI Urgences", description="Formation flash et nouvelles poubelles jaunes aux box 1-4.", service_id="URG", category="Dechets", score=5),
-            ActionDB(title="Covoit' Nuit", description="Application covoiturage pour l'équipe de nuit.", service_id="RH", category="Social", score=2),
-            ActionDB(title="Zéro Papier Admission", description="Numérisation complète du dossier d'entrée.", service_id="ADM", category="Numerique", score=8),
+            ActionDB(title="Écrans Bloc Nuit", description="Extinction auto.", service_id="BLOC", category="Energie", score=12.5),
+            ActionDB(title="Tri Déchets Box 1", description="Poubelles jaunes.", service_id="URG", category="Dechets", score=5.0),
+            ActionDB(title="Covoit' Équipe Nuit", description="App dédiée.", service_id="RH", category="Social", score=2.0),
+            ActionDB(title="Démat' Admission", description="Tablettes entrée.", service_id="ADM", category="Numerique", score=8.5),
         ]
         db.add_all(actions)
         db.commit()
         print("✅ Seed terminé.")
     db.close()
 
+# ... le reste inchangé ...
 # Lancer le seed au démarrage
 seed_data()
 
