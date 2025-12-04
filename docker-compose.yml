@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: greencare_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend # Hot-reload pour le dev
+      - ./data:/app/data       # Persistance DB
+    restart: unless-stopped
+    # Security options (HDS best practices beginnings)
+    security_opt:
+      - no-new-privileges:true
