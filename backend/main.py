@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles  # <-- Ajout
 from backend.db import engine, Base, SessionLocal
 from backend.models import ActionDB
-from backend.routes import router
+from backend.routes import router as api_router
 from backend.fhir import router as fhir_router 
 
 # Création des tables (Mode bourrin pour POC, en prod on utilise Alembic)

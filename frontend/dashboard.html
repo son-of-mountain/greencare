@@ -16,32 +16,38 @@
     </header>
 
     <div class="container">
-        <h2>Tableau de Bord d'Impact</h2>
-        <p>Indicateurs en temps réel (Données simulées pour étape 3)</p>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2>Tableau de Bord d'Impact</h2>
+            <button onclick="downloadCSV()" style="font-size:0.9em;">📥 Export CSV</button>
+        </div>
+        <p>Indicateurs temps réel (Actions score > 0)</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
             <div class="card" style="text-align:center;">
                 <h3>Énergie Économisée</h3>
-                <div class="score">1,240 kWh</div>
-                <small>-15% vs N-1</small>
+                <div class="score" id="kpi-kwh">--</div>
+                <small>kWh / an</small>
             </div>
             <div class="card" style="text-align:center;">
-                <h3>DASRI Évités</h3>
-                <div class="score">450 kg</div>
-                <small>Soit ~1300€ économisés</small>
+                <h3>Économies</h3>
+                <div class="score" id="kpi-euro">--</div>
+                <small>Euros / an</small>
             </div>
             <div class="card" style="text-align:center;">
-                <h3>Actions Validées</h3>
-                <div class="score">12</div>
-                <small>Sur 28 proposées</small>
+                <h3>CO2 Évité</h3>
+                <div class="score" id="kpi-co2">--</div>
+                <small>kg CO2e / an</small>
             </div>
         </div>
         
         <div class="card">
-            <h3>Export Open Data</h3>
-            <p>Télécharger les données d'impact pour analyse tierce.</p>
-            <button disabled>Télécharger .CSV (Bientôt)</button>
+            <h3>Actions Qualifiées</h3>
+            <p>Nombre d'initiatives RSE retenues par la communauté.</p>
+            <div class="score" id="kpi-count">--</div>
         </div>
     </div>
+    
+    <script src="script.js"></script>
+    <script>loadDashboard();</script>
 </body>
 </html>
