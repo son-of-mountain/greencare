@@ -31,6 +31,17 @@ class VoteDB(Base):
     value = Column(Integer)
     action = relationship("ActionDB", back_populates="votes")
 
+class NewsDB(Base):
+    __tablename__ = "news"
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    description = Column(String)
+    category = Column(String)  # "energie", "dechets", "innovation", "social"
+    country = Column(String)  # Pays d'origine de l'actualité
+    image_url = Column(String, nullable=True)
+    source = Column(String, nullable=True)  # Source de l'info
+    date = Column(String)  # Date de publication
+
 # --- Pydantic Models ---
 class ActionCreate(BaseModel):
     title: str
@@ -58,6 +69,28 @@ class ActionResponse(BaseModel):
     gain_kwh: float
     gain_euro: float
     gain_co2: float
+
+    class Config:
+        from_attributes = True
+
+class NewsCreate(BaseModel):
+    title: str
+    description: str
+    category: str
+    country: str
+    image_url: Optional[str] = None
+    source: Optional[str] = None
+    date: str
+
+class NewsResponse(BaseModel):
+    id: int
+    title: str
+    description: str
+    category: str
+    country: str
+    image_url: Optional[str] = None
+    source: Optional[str] = None
+    date: str
 
     class Config:
         from_attributes = True

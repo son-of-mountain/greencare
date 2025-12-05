@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCare - Actualités RSE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .news-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.85em;
+        }
+
+        .category-energie { background: #fef3c7; color: #d97706; }
+        .category-dechets { background: #dcfce7; color: #16a34a; }
+        .category-innovation { background: #dbeafe; color: #2563eb; }
+        .category-social { background: #fce7f3; color: #db2777; }
+
+        .news-country {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 12px 0;
+            line-height: 1.4;
+        }
+
+        .news-description {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .news-footer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85em;
+            color: #888;
+        }
+
+        .stats-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .stats-banner h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .stats-banner p {
+            margin: 0;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="/app/landing.html" class="home-btn" title="Retour à l'accueil">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </a>
+            <img src="images/greencare-logo.png" alt="GreenCare" style="height: 45px;">
+        </div>
+        <nav>
+            <a href="index.html">Actions</a>
+            <a href="propose.html">Proposer</a>
+            <a href="news.html" class="active">Actualités</a>
+            <a href="dashboard.html">Impact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="stats-banner">
+            <h3>🌍 Actualités RSE Hospitalières du Monde</h3>
+            <p>Découvrez les initiatives innovantes et inspirantes des établissements de santé engagés pour la planète</p>
+        </div>
+
+        <div class="news-filters">
+            <button class="filter-btn active" data-category="all">Toutes</button>
+            <button class="filter-btn" data-category="energie">⚡ Énergie</button>
+            <button class="filter-btn" data-category="dechets">♻️ Déchets</button>
+            <button class="filter-btn" data-category="innovation">💡 Innovation</button>
+            <button class="filter-btn" data-category="social">👥 Social</button>
+        </div>
+
+        <div id="news-grid" class="news-grid">
+            <p style="text-align: center; color: #666;">Chargement des actualités...</p>
+        </div>
+    </div>
+
+    <script src="news.js"></script>
+</body>
+</html>

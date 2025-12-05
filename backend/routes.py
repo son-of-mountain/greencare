@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import desc
 from typing import List, Optional
 from backend.db import get_db
-from backend.models import ActionDB, VoteDB, ActionCreate, VoteCreate, ActionResponse
+from backend.models import ActionDB, VoteDB, ActionCreate, VoteCreate, ActionResponse, NewsDB, NewsCreate, NewsResponse
 
 router = APIRouter()
 
@@ -127,3 +127,113 @@ def export_kpis_csv(db: Session = Depends(get_db)):
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=greencare_kpis.csv"}
     )
+
+# --- ACTUALITÉS RSE ---
+
+@router.get("/news", response_model=List[NewsResponse])
+def get_news(
+    category: Optional[str] = Query(None),
+    db: Session = Depends(get_db)
+):
+    query = db.query(NewsDB)
+    if category:
+        query = query.filter(NewsDB.category == category)
+    return query.order_by(desc(NewsDB.id)).all()
+
+@router.post("/news", response_model=NewsResponse)
+def create_news(news: NewsCreate, db: Session = Depends(get_db)):
+    db_news = NewsDB(**news.model_dump())
+    db.add(db_news)
+    db.commit()
+    db.refresh(db_news)
+    return db_news
+
+@router.post("/news/init")
+def init_news_data(db: Session = Depends(get_db)):
+    """Initialiser des actualités RSE génériques pour la démo"""
+    
+    # Vérifier si déjà initialisé
+    if db.query(NewsDB).count() > 0:
+        return {"message": "Données déjà initialisées"}
+    
+    sample_news = [
+        {
+            "title": "CHU de Lyon : -30% d'émissions CO2 grâce à l'optimisation énergétique",
+            "description": "Le Centre Hospitalier Universitaire de Lyon a mis en place un système de gestion intelligente de l'énergie, permettant de réduire de 30% ses émissions de CO2. L'installation de capteurs IoT et l'optimisation des systèmes de chauffage ont généré une économie annuelle de 450 000€.",
+            "category": "energie",
+            "country": "France",
+            "image_url": "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800",
+            "source": "Le Monde Santé",
+            "date": "2024-11-15"
+        },
+        {
+            "title": "Hopital de Singapour : 100% recyclage des déchets médicaux non-dangereux",
+            "description": "Le Singapore General Hospital a atteint l'objectif ambitieux de recycler 100% de ses déchets médicaux non-dangereux. Grâce à un tri sélectif renforcé et des partenariats avec des entreprises de recyclage spécialisées, l'hôpital détourne 12 tonnes de déchets par jour des décharges.",
+            "category": "dechets",
+            "country": "Singapour",
+            "image_url": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+            "source": "Healthcare Asia",
+            "date": "2024-11-20"
+        },
+        {
+            "title": "Hôpital de Copenhague : IA pour réduire le gaspillage alimentaire de 40%",
+            "description": "Le Rigshospitalet de Copenhague utilise l'intelligence artificielle pour prédire précisément les besoins alimentaires des patients. Cette innovation a permis de réduire le gaspillage alimentaire de 40%, soit 80 tonnes par an, tout en améliorant la satisfaction des patients.",
+            "category": "innovation",
+            "country": "Danemark",
+            "image_url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800",
+            "source": "Nordic Healthcare Journal",
+            "date": "2024-11-10"
+        },
+        {
+            "title": "NHS UK : Programme mobilité douce pour 15 000 soignants",
+            "description": "Le National Health Service britannique lance un programme ambitieux de mobilité douce : vélos électriques, transports en commun gratuits et covoiturage pour 15 000 soignants. Objectif : réduire de 25% l'empreinte carbone des déplacements domicile-travail d'ici 2025.",
+            "category": "social",
+            "country": "Royaume-Uni",
+            "image_url": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800",
+            "source": "The Guardian Health",
+            "date": "2024-11-25"
+        },
+        {
+            "title": "Hôpital de Tokyo : panneaux solaires produisent 60% de l'électricité",
+            "description": "L'Hôpital universitaire de Tokyo a installé 5 000 m² de panneaux solaires sur ses toits et parkings. La production couvre désormais 60% des besoins électriques de l'établissement, évitant l'émission de 800 tonnes de CO2 par an.",
+            "category": "energie",
+            "country": "Japon",
+            "image_url": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800",
+            "source": "Tokyo Medical News",
+            "date": "2024-11-05"
+        },
+        {
+            "title": "Clinique de Montréal : premier hôpital carboneutre d'Amérique du Nord",
+            "description": "Le Centre Hospitalier de l'Université de Montréal (CHUM) devient le premier hôpital carboneutre d'Amérique du Nord. Grâce à la géothermie, l'efficacité énergétique et la compensation carbone, l'établissement atteint la neutralité carbone avec 3 ans d'avance.",
+            "category": "innovation",
+            "country": "Canada",
+            "image_url": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800",
+            "source": "Radio Canada",
+            "date": "2024-12-01"
+        },
+        {
+            "title": "Hôpital de Berlin : programme bien-être réduit le burn-out de 35%",
+            "description": "La Charité de Berlin a lancé un programme holistique de bien-être pour son personnel soignant : espaces de repos, téléconsultations psychologiques, horaires flexibles. Résultat : une baisse de 35% des cas de burn-out et une amélioration notable de la qualité des soins.",
+            "category": "social",
+            "country": "Allemagne",
+            "image_url": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800",
+            "source": "Deutsche Welle Health",
+            "date": "2024-11-18"
+        },
+        {
+            "title": "Barcelone : circuit court pour l'alimentation hospitalière bio",
+            "description": "Les hôpitaux de Barcelone s'approvisionnent désormais à 70% auprès de producteurs locaux bio dans un rayon de 50km. Cette initiative soutient l'économie locale, réduit les émissions de transport et améliore la qualité nutritionnelle des repas.",
+            "category": "dechets",
+            "country": "Espagne",
+            "image_url": "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800",
+            "source": "El País Salud",
+            "date": "2024-11-22"
+        }
+    ]
+    
+    for news_data in sample_news:
+        db_news = NewsDB(**news_data)
+        db.add(db_news)
+    
+    db.commit()
+    return {"message": f"{len(sample_news)} actualités initialisées avec succès"}
