@@ -4,6 +4,7 @@ from backend.db import engine, Base, SessionLocal
 from backend.models import ActionDB
 from backend.routes import router as api_router
 from backend.fhir import router as fhir_router 
+from backend.security import SecurityHeadersMiddleware
 
 # Création des tables (Mode bourrin pour POC, en prod on utilise Alembic)
 Base.metadata.create_all(bind=engine)
@@ -14,12 +15,18 @@ app = FastAPI(
     version="0.2.0"
 )
 
+# --- SÉCURITÉ (HDS Requirement) ---
+# Activation du middleware qui ajoute les headers à chaque réponse
+app.add_middleware(SecurityHeadersMiddleware)
+
 # API Métier (Actions, Votes, KPIs)
 app.include_router(api_router, prefix="/api", tags=["Métier RSE"])
 
 # API Interopérabilité (FHIR)
 # Numih : Standard FHIR pour les annuaires
 app.include_router(fhir_router, prefix="/fhir", tags=["Interopérabilité FHIR"])
+
+app.mount("/app", StaticFiles(directory="frontend", html=True), name="frontend")
 
 # --- SEED DATA (Données de test) ---
 
@@ -41,10 +48,6 @@ def seed_data():
 
 # Lancer le seed au démarrage
 seed_data()
-
-# montage des fichiers statiques(front)
-# accessible via 8000 port
-app.mount("/app",StaticFiles(directory="frontend", html=True), name="frontend")
 
 
 @app.get("/")
