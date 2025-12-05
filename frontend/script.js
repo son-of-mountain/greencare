@@ -10,24 +10,56 @@ async function loadActions() {
     const actions = await res.json();
 
     container.innerHTML = actions.map(action => `
-        <div class="card">
+        <div class="card instagram-card">
             ${action.image_url ? `
-                <div class="card-image" style="background-image: url('${action.image_url}');"></div>
-            ` : ''}
-            <div class="card-content">
-                <div class="card-header">
-                    <h3 style="margin-bottom: 5px;">${action.title}</h3>
-                    <span class="badge">${action.category}</span>
+                <div class="instagram-image" style="background-image: url('${action.image_url}');"></div>
+            ` : `
+                <div class="instagram-image no-image">
+                    <div class="placeholder-icon">🏥</div>
                 </div>
-                <p style="margin: 10px 0; line-height: 1.6;">${action.description}</p>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; padding-top: 15px; border-top: 1px solid var(--border);">
-                    <span class="score" style="font-size: 1.3em;">Score: ${action.score.toFixed(1)}</span>
-                    <div style="display: flex; gap: 8px;">
-                        <button class="vote-btn" onclick="vote(${action.id}, 1)">👍 Pour</button>
-                        <button class="vote-btn" onclick="vote(${action.id}, -1)">👎 Contre</button>
+            `}
+            <div class="instagram-content">
+                <div class="instagram-header">
+                    <div class="action-title-section">
+                        <h3 class="action-title">${action.title}</h3>
+                        <span class="badge">${action.category}</span>
+                    </div>
+                    <span class="service-tag">📍 ${action.service_id}</span>
+                </div>
+                
+                <p class="action-description">${action.description}</p>
+                
+                <div class="instagram-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">⚡</span>
+                        <span class="stat-value">${action.gain_kwh || 0} kWh</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">💰</span>
+                        <span class="stat-value">${action.gain_euro || 0} €</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🌍</span>
+                        <span class="stat-value">${action.gain_co2 || 0} kg CO2</span>
                     </div>
                 </div>
-                <small style="opacity:0.6; margin-top: 10px; display: block;">📍 Service: ${action.service_id}</small>
+                
+                <div class="instagram-footer">
+                    <div class="score-display">
+                        <span class="score-label">Score:</span>
+                        <span class="score-value">${action.score.toFixed(1)}</span>
+                    </div>
+                    <div class="vote-buttons">
+                        <button class="vote-btn vote-for" onclick="vote(${action.id}, 1)">
+                            <span class="vote-icon">👍</span>
+                            <span class="vote-text">Pour</span>
+                        </button>
+                        <button class="vote-btn vote-against" onclick="vote(${action.id}, -1)">
+                            <span class="vote-icon">👎</span>
+                            <span class="vote-text">Contre</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     `).join('');
