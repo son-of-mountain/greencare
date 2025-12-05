@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCare - Santé Durable pour Demain</title>
+    <link rel="stylesheet" href="landing-style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <span class="logo-text">GreenCare</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <canvas id="healthCanvas"></canvas>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="medical-icon icon-1">⚕️</div>
+            <div class="medical-icon icon-2">🏥</div>
+            <div class="medical-icon icon-3">💊</div>
+            <div class="medical-icon icon-4">🩺</div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="fade-in-up">Ensemble, pour une santé</span>
+                <span class="fade-in-up delay-1">durable et responsable</span>
+            </h1>
+            <p class="hero-subtitle fade-in-up delay-2">
+                Transformons nos établissements de santé en acteurs du changement écologique
+            </p>
+            <div class="hero-buttons fade-in-up delay-3">
+                <button class="btn-hero-primary" onclick="enterApp()">
+                    <span>Accéder à la Plateforme</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Défiler pour découvrir</span>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="mission-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Notre Mission</span>
+                <h2 class="section-title">Acteur public du numérique en santé</h2>
+            </div>
+            <div class="mission-content">
+                <div class="mission-text">
+                    <p class="lead-text">
+                        GreenCare est le 1er acteur public au service de la transformation numérique 
+                        et écologique des établissements de santé, d'éducation et d'engagement aux 
+                        côtés des collectivités territoriales et des services déconcentrés de l'État.
+                    </p>
+                    <div class="mission-points">
+                        <div class="mission-point">
+                            <div class="point-icon">💡</div>
+                            <div class="point-content">
+                                <h3>Solutions Innovantes</h3>
+                                <p>Imaginant, développant et déployant des solutions numériques innovantes, souveraines, sécurisées, éthiques et responsables</p>
+                            </div>
+                        </div>
+                        <div class="mission-point">
+                            <div class="point-icon">🌍</div>
+                            <div class="point-content">
+                                <h3>Engagement Écologique</h3>
+                                <p>Réduction de l'empreinte carbone et promotion de pratiques durables dans le secteur de la santé</p>
+                            </div>
+                        </div>
+                        <div class="mission-point">
+                            <div class="point-icon">🤝</div>
+                            <div class="point-content">
+                                <h3>Collaboration</h3>
+                                <p>Mobilisation collective des soignants, cadres et directions pour un impact maximal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-visual">
+                    <div class="visual-card card-1">
+                        <div class="visual-icon">⚡</div>
+                        <div class="visual-text">Efficacité Énergétique</div>
+                    </div>
+                    <div class="visual-card card-2">
+                        <div class="visual-icon">♻️</div>
+                        <div class="visual-text">Gestion des Déchets</div>
+                    </div>
+                    <div class="visual-card card-3">
+                        <div class="visual-icon">💻</div>
+                        <div class="visual-text">Numérique Responsable</div>
+                    </div>
+                    <div class="visual-card card-4">
+                        <div class="visual-icon">🌱</div>
+                        <div class="visual-text">Qualité de Vie</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact-section">
+        <div class="section-container">
+            <div class="section-header centered">
+                <span class="section-tag">Impact Mesuré</span>
+                <h2 class="section-title">Des résultats concrets et mesurables</h2>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">🏥</div>
+                    <div class="impact-value counter" data-target="150">0</div>
+                    <div class="impact-label">Établissements partenaires</div>
+                    <div class="impact-description">Hôpitaux et cliniques engagés</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">⚡</div>
+                    <div class="impact-value counter" data-target="2500">0</div>
+                    <div class="impact-label">MWh économisés / an</div>
+                    <div class="impact-description">Réduction de consommation</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🌍</div>
+                    <div class="impact-value counter" data-target="450">0</div>
+                    <div class="impact-label">Tonnes CO2 évitées</div>
+                    <div class="impact-description">Impact environnemental direct</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">💰</div>
+                    <div class="impact-value counter" data-target="850">0</div>
+                    <div class="impact-label">K€ d'économies</div>
+                    <div class="impact-description">Budget réinvesti dans les soins</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Prêt à transformer votre établissement ?</h2>
+            <p class="cta-text">Rejoignez les 150+ établissements qui font la différence</p>
+            <button class="btn-cta" onclick="enterApp()">
+                Commencer maintenant
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="cta-background"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-icon">🌱</span>
+                    <span class="logo-text">GreenCare</span>
+                </div>
+                <p>Ensemble pour une santé durable</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Plateforme</h4>
+                    <a href="#">Actions</a>
+                    <a href="#">Proposer</a>
+                    <a href="#">Dashboard</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Ressources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-column">
+                    <h4>À propos</h4>
+                    <a href="#">Notre équipe</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GreenCare. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="landing-script.js"></script>
+</body>
+</html>

@@ -14,11 +14,11 @@ class ActionDB(Base):
     service_id = Column(String)
     category = Column(String)
     score = Column(Float, default=0.0)
+    image_url = Column(String, nullable=True) # <-- NOUVEAU CHAMP IMAGE
     
-    # Nouveaux champs d'impact (Sobriété & Économies)
-    gain_kwh = Column(Float, default=0.0)  # Énergie économisée
-    gain_euro = Column(Float, default=0.0) # Économies financières
-    gain_co2 = Column(Float, default=0.0)  # Kg CO2 évités
+    gain_kwh = Column(Float, default=0.0)
+    gain_euro = Column(Float, default=0.0)
+    gain_co2 = Column(Float, default=0.0)
     
     votes = relationship("VoteDB", back_populates="action")
 
@@ -37,7 +37,7 @@ class ActionCreate(BaseModel):
     description: str
     service_id: str
     category: str
-    # Champs optionnels lors de la création
+    image_url: Optional[str] = None # <-- NOUVEAU DANS L'INPUT
     gain_kwh: Optional[float] = 0.0
     gain_euro: Optional[float] = 0.0
     gain_co2: Optional[float] = 0.0
@@ -54,6 +54,7 @@ class ActionResponse(BaseModel):
     service_id: str
     category: str
     score: float
+    image_url: Optional[str] = None # <-- NOUVEAU DANS L'OUTPUT
     gain_kwh: float
     gain_euro: float
     gain_co2: float

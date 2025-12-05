@@ -14,13 +14,14 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         # 3. X-Frame-Options
         response.headers["X-Frame-Options"] = "DENY"
         
-        # 4. Content-Security-Policy (CSP) - CORRECTION ICI
-        # On ajoute "script-src 'self' 'unsafe-inline'" pour autoriser nos <script>load...()</script>
+        # 4. Content-Security-Policy (CSP) - CORRIGÉ POUR LES IMAGES
+        # On ajoute les domaines externes autorisés pour les images, les scripts et les styles
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline'; "
-            "img-src 'self' data:; "
-            "style-src 'self' 'unsafe-inline';"
+            "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; "
+            "img-src 'self' data: https://images.unsplash.com https://ui-avatars.com; "  # <--- AJOUT ICI
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+            "font-src 'self' https://fonts.gstatic.com;"
         )
         
         # 5. Referrer-Policy
