@@ -12,18 +12,18 @@ async function loadActions() {
     container.innerHTML = actions.map(action => `
         <div class="card">
             <div class="card-header">
-                <h3>${action.title}</h3>
+                <h3 style="margin-bottom: 5px;">${action.title}</h3>
                 <span class="badge">${action.category}</span>
             </div>
-            <p>${action.description}</p>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-                <span class="score">Score: ${action.score.toFixed(1)}</span>
-                <div>
+            <p style="margin: 10px 0; line-height: 1.6;">${action.description}</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px; padding-top: 15px; border-top: 1px solid var(--border);">
+                <span class="score" style="font-size: 1.3em;">Score: ${action.score.toFixed(1)}</span>
+                <div style="display: flex; gap: 8px;">
                     <button class="vote-btn" onclick="vote(${action.id}, 1)">👍 Pour</button>
                     <button class="vote-btn" onclick="vote(${action.id}, -1)">👎 Contre</button>
                 </div>
             </div>
-            <small style="opacity:0.7">Service: ${action.service_id}</small>
+            <small style="opacity:0.6; margin-top: 10px; display: block;">📍 Service: ${action.service_id}</small>
         </div>
     `).join('');
 }

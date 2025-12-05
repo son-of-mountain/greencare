@@ -54,5 +54,6 @@ seed_data()
 async def root():
     return {
         "message": "GreenCare API is running", 
-        "ui_url": "http://localhost:8000/app/"
+        "status": "healthy",
+	"ui_url": "http://localhost:8000/app/"
     }

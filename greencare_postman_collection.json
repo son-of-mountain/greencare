@@ -1,0 +1,52 @@
+{
+	"info": {
+		"name": "GreenCare API (Numih)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Healthcheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8000/", "protocol": "http", "host": ["localhost"], "port": "8000", "path": [""] }
+			}
+		},
+		{
+			"name": "2. List Actions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8000/api/actions?sort=score", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api", "actions"], "query": [{ "key": "sort", "value": "score" }] }
+			}
+		},
+		{
+			"name": "3. Create Action",
+			"request": {
+				"method": "POST",
+				"header": [{ "key": "Content-Type", "value": "application/json" }],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Postman Test\",\n    \"description\": \"Action créée via Postman\",\n    \"service_id\": \"IT\",\n    \"category\": \"Numerique\"\n}"
+				},
+				"url": { "raw": "http://localhost:8000/api/actions", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api", "actions"] }
+			}
+		},
+		{
+			"name": "4. Get KPIs (Open Data)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8000/api/kpis", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["api", "kpis"] }
+			}
+		},
+		{
+			"name": "5. FHIR Organization",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8000/fhir/Organization", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["fhir", "Organization"] }
+			}
+		}
+	]
+}
