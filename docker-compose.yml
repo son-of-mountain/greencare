@@ -12,6 +12,7 @@ services:
       # Mode développement : modifications locales reflétées immédiatement
       - ./backend:/app/backend
       - ./frontend:/app/frontend
+      - ./tests:/app/tests
       - ./data:/app/data
     environment:
       - DB_URL=sqlite:///./data/greencare.db
