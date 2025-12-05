@@ -42,6 +42,16 @@
                     <option value="Social">QVT / Social</option>
                 </select>
 
+                <label>Image de l'action</label>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="file" id="image" accept="image/*" style="padding: 10px;">
+                    <div id="image-preview" style="display: none; margin-top: 10px;">
+                        <img id="preview-img" src="" alt="Aperçu" style="max-width: 100%; max-height: 300px; border-radius: 8px; object-fit: cover;">
+                    </div>
+                    <small style="opacity: 0.7;">ou saisissez une URL d'image</small>
+                    <input type="url" id="image-url" placeholder="https://example.com/image.jpg">
+                </div>
+
                 <button type="submit">Soumettre</button>
             </form>
         </div>
