@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenCare - Actualités RSE</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbot.css">
     <style>
         .news-filters {
             display: flex;
@@ -173,6 +174,32 @@
         </div>
     </div>
 
+    <!-- Chatbot Vert -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle" onclick="toggleChatbot()">🌱</button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">🌱</div>
+                <div class="chatbot-info">
+                    <h3>Vert</h3>
+                    <p>Assistant RSE</p>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatMessages"></div>
+            <div class="chatbot-suggestions" id="chatSuggestions"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Posez votre question...">
+                <button class="chatbot-send" onclick="handleUserInput()">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2 3l16 7-16 7V3zm2 10l8-3-8-3v6z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="news.js"></script>
+    <script src="chatbot.js"></script>
+    <script>initChatbot();</script>
 </body>
 </html>
