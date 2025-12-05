@@ -4,20 +4,23 @@
   publish = "."
   command = "echo 'Static frontend - no build needed'"
 
+# Redirection de /app/* vers les fichiers sans /app/
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+  from = "/app/*"
+  to = "/:splat"
+  status = 301
 
+# Page d'accueil vers landing
 [[redirects]]
   from = "/"
   to = "/landing.html"
   status = 200
 
+# Fallback pour toutes les autres routes
 [[redirects]]
   from = "/*"
-  to = "/:splat"
-  status = 200
+  to = "/landing.html"
+  status = 404
 
 [functions]
   directory = "netlify/functions"
