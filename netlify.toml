@@ -1,22 +1,22 @@
-# Netlify Configuration for GreenCare
+# Netlify Configuration for GreenCare Frontend
 [build]
   publish = "frontend"
-  command = "echo 'No build needed - static frontend'"
+  command = "echo 'Static frontend - no build needed'"
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
+# Redirect all /app/* to root
 [[redirects]]
   from = "/app/*"
   to = "/:splat"
   status = 200
 
+# Redirect root to landing page
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/landing.html"
   status = 200
 
-[functions]
-  directory = "netlify/functions"
+# Handle 404s
+[[redirects]]
+  from = "/*"
+  to = "/landing.html"
+  status = 404
