@@ -9,10 +9,32 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app/backend # Hot-reload pour le dev
+      # Mode développement : modifications locales reflétées immédiatement
+      - ./backend:/app/backend
       - ./frontend:/app/frontend
-      - ./data:/app/data       # Persistance DB
+      - ./data:/app/data
+    environment:
+      - DB_URL=sqlite:///./data/greencare.db
     restart: unless-stopped
-    # Security options (HDS best practices beginnings)
+    
+    # --- SOBRIÉTÉ NUMÉRIQUE (Limites ressources) ---
+    # On bride le conteneur pour éviter la surconsommation
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 64M
+          
+    # --- ROBUSTESSE (Healthcheck) ---
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    
+    # Sécurité Docker (Best practice)
     security_opt:
       - no-new-privileges:true
