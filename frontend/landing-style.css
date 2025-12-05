@@ -79,6 +79,11 @@ body {
     transform: scale(1.05);
 }
 
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
 .logo-icon {
     font-size: 2rem;
 }
