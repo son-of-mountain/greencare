@@ -7,6 +7,14 @@
 ![Badge Eco](https://img.shields.io/badge/Eco_Conception-A-green)
 ![Badge FHIR](https://img.shields.io/badge/Interop-HL7_FHIR-orange)
 
+<div align="center">
+
+<img src="https://github.com/user-attachments/assets/7c5d43d7-512f-4664-af6a-c47001a317f0" alt="GreenCare Logo" width="220"/>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div>
+
+
 ## 📋 Le Concept
 Les établissements de santé peinent à concrétiser leur stratégie RSE sur le terrain. **GreenCare** est une brique logicielle transverse qui permet de :
 1.  **Remonter** les initiatives terrain (Soignants, Techs, Admin).
