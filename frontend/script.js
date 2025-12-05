@@ -69,3 +69,29 @@ async function submitAction(e) {
         alert("Erreur formulaire");
     }
 }
+
+// ... (code existant loadActions, vote, submitAction) ...
+
+// Charger les KPIs pour le dashboard
+async function loadDashboard() {
+    const kwhEl = document.getElementById('kpi-kwh');
+    if(!kwhEl) return; // Pas sur la page dashboard
+
+    try {
+        const res = await fetch(`${API_URL}/kpis`);
+        const data = await res.json();
+
+        // Animation simple des chiffres ou affichage direct
+        document.getElementById('kpi-kwh').textContent = data.total_kwh.toLocaleString();
+        document.getElementById('kpi-euro').textContent = data.total_euro.toLocaleString() + ' €';
+        document.getElementById('kpi-co2').textContent = data.total_co2.toLocaleString();
+        document.getElementById('kpi-count').textContent = data.actions_count;
+    } catch(e) {
+        console.error("Erreur chargement KPIs", e);
+    }
+}
+
+// Télécharger le CSV
+function downloadCSV() {
+    window.location.href = `${API_URL}/exports/kpis.csv`;
+}
