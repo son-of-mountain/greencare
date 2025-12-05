@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GreenCare - Santé Durable pour Demain</title>
     <link rel="stylesheet" href="landing-style.css">
+    <link rel="stylesheet" href="hero-animation.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -19,34 +20,51 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-background">
-            <canvas id="healthCanvas"></canvas>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="medical-icon icon-1">⚕️</div>
-            <div class="medical-icon icon-2">🏥</div>
-            <div class="medical-icon icon-3">💊</div>
-            <div class="medical-icon icon-4">🩺</div>
+            <canvas id="particleCanvas"></canvas>
+            <div class="neural-grid"></div>
+            <div class="sovereignty-aura"></div>
+            <div class="medical-symbols">
+                <div class="symbol symbol-1">⚕️</div>
+                <div class="symbol symbol-2">🏥</div>
+                <div class="symbol symbol-3">💊</div>
+                <div class="symbol symbol-4">🩺</div>
+                <div class="symbol symbol-5">🌱</div>
+                <div class="symbol symbol-6">💚</div>
+            </div>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="fade-in-up">Et si la RSE hospitalière</span>
-                <span class="fade-in-up delay-1">était enfin dans votre SI ?</span>
-            </h1>
-            <p class="hero-subtitle fade-in-up delay-2">
-                La première brique RSE transverse pour dh, le futur ERP hospitalier de 
-                <img src="images/numih-logo.png" alt="Numih" style="height: 30px; vertical-align: middle; margin: 0 5px;">
+                <span class="word" data-word="Et">Et</span>
+                <span class="word" data-word="si">si</span>
+                <span class="word" data-word="la">la</span>
+                <span class="word" data-word="RSE">RSE</span>
+                <span class="word" data-word="hospitalière">hospitalière</span>
                 <br>
-                Souveraine, participative et pilotée par les agents.
+                <span class="word" data-word="était">était</span>
+                <span class="word" data-word="enfin">enfin</span>
+                <span class="word" data-word="dans">dans</span>
+                <span class="word" data-word="votre">votre</span>
+                <span class="word highlight-si" data-word="SI">SI</span>
+                <span class="word question" data-word="?">?</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="subtitle-text">La première brique RSE transverse pour <strong>dh</strong>, le futur ERP hospitalier de</span>
+                <img src="images/numih-logo.png" alt="Numih" class="numih-logo-hero">
+                <br>
+                <span class="subtitle-emphasis">Souveraine, participative et pilotée par les agents.</span>
+                <br>
+                <span class="subtitle-small">Conçue "by design" pour s'intégrer nativement dans le système d'information hospitalier</span>
             </p>
-            <div class="hero-buttons fade-in-up delay-3">
-                <button class="btn-hero-primary" onclick="enterApp()">
-                    <span>Accéder à la Plateforme</span>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+            <div class="hero-button-wrapper">
+                <button class="btn-hero-ultimate" onclick="enterApp()">
+                    <span class="btn-orbital-particles"></span>
+                    <span class="btn-text">Accéder à la Plateforme</span>
+                    <span class="btn-arrow">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    <span class="btn-glow"></span>
                 </button>
             </div>
         </div>
@@ -219,6 +237,7 @@
         </div>
     </footer>
 
+    <script src="particle-system.js"></script>
     <script src="landing-script.js"></script>
 </body>
 </html>
