@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from backend.db import engine, Base, SessionLocal
 from backend.models import ActionDB
 from backend.routes import router as api_router
@@ -9,6 +10,20 @@ from backend.security import SecurityHeadersMiddleware
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="GreenCare API", version="0.5.0")
+
+# CORS pour permettre l'accès depuis Netlify
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://greencare-numhi.netlify.app",
+        "http://localhost",
+        "http://localhost:80",
+        "http://localhost:8000"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Sécurité HDS
 app.add_middleware(SecurityHeadersMiddleware)
