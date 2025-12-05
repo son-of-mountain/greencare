@@ -1,4 +1,4 @@
-const API_URL = '/api';
+const API_URL = 'https://greencare-backend.onrender.com/api';
 
 // Charger les actions
 async function loadActions() {

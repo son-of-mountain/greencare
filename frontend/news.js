@@ -1,5 +1,5 @@
 // Gestion des actualités RSE
-const API_URL = '/api';
+const API_URL = 'https://greencare-backend.onrender.com/api';
 
 let allNews = [];
 let currentFilter = 'all';
