@@ -14,23 +14,23 @@
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; justify-items: center;">
 
-<img src="https://github.com/user-attachments/assets/9abab085-80ed-4080-a6be-d83370182517" width="20%" />
+<img src="https://github.com/user-attachments/assets/9abab085-80ed-4080-a6be-d83370182517" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/884e723f-8c0c-40a9-ba52-4d8ceb7c0683" width="20%" />
+<img src="https://github.com/user-attachments/assets/884e723f-8c0c-40a9-ba52-4d8ceb7c0683" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/bbe90808-aa13-4838-86ab-9a40ed0c0a29" width="20%" />
+<img src="https://github.com/user-attachments/assets/bbe90808-aa13-4838-86ab-9a40ed0c0a29" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/bb05309d-46ae-4167-b170-ebb34371bbc4" width="20%" />
+<img src="https://github.com/user-attachments/assets/bb05309d-46ae-4167-b170-ebb34371bbc4" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/098e6037-ba01-4454-8853-5f21a5d350a2" width="20%" />
+<img src="https://github.com/user-attachments/assets/098e6037-ba01-4454-8853-5f21a5d350a2" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/a12877ed-d377-494e-acfa-088d30ad7047" width="20%" />
+<img src="https://github.com/user-attachments/assets/a12877ed-d377-494e-acfa-088d30ad7047" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/2181e9b0-db22-47d0-a345-ada8a259a1d5" width="20%" />
+<img src="https://github.com/user-attachments/assets/2181e9b0-db22-47d0-a345-ada8a259a1d5" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/2309271e-770a-4b29-a702-9efcaa57175b" width="20%" />
+<img src="https://github.com/user-attachments/assets/2309271e-770a-4b29-a702-9efcaa57175b" width="30%" />
 
-<img src="https://github.com/user-attachments/assets/9fff8b3d-9d60-4799-8e17-a29530c39267" width="20%" />
+<img src="https://github.com/user-attachments/assets/9fff8b3d-9d60-4799-8e17-a29530c39267" width="30%" />
 
 </div>
 
