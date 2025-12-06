@@ -7,10 +7,17 @@
 ![Badge Eco](https://img.shields.io/badge/Eco_Conception-A-green)
 ![Badge FHIR](https://img.shields.io/badge/Interop-HL7_FHIR-orange)
 
+## Démo 🔦
+
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/7c5d43d7-512f-4664-af6a-c47001a317f0" alt="GreenCare Logo" width="220"/>
+&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="https://github.com/user-attachments/assets/37c458dd-110d-40e5-bc89-5470ca8cda0d" alt="Demo GreenCare" />
+</div>
+
 <div align="center">
 
-<img src="https://github.com/user-attachments/assets/7c5d43d7-512f-4664-af6a-c47001a317f0" alt="GreenCare Logo" width="220"/>
-&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; justify-items: center;">
 
@@ -33,7 +40,7 @@
 <img src="https://github.com/user-attachments/assets/9fff8b3d-9d60-4799-8e17-a29530c39267" width="30%" />
 
 </div>
-
+</div>
 
 
 
@@ -57,7 +64,7 @@ Conçu pour s'intégrer nativement au progiciel **dh**, GreenCare respecte les e
 ### Installation & Lancement
 ```bash
 # 1. Cloner le projet
-git clone [https://github.com/votre-repo/greencare.git](https://github.com/votre-repo/greencare.git)
+git clone https://github.com/son-of-mountain/greencare
 cd greencare
 
 # 2. Lancer l'environnement (Build optimisé Multi-stage)
@@ -90,21 +97,21 @@ Annuaire : Standard HL7 FHIR R4 (/fhir/Organization, /fhir/Practitioner).
 Reporting : Exports Open Data (CSV/JSON) pour l'intégration décisionnelle.
 
 ## 📂 Structure du Projet
-```
+
 greencare/
 ├── backend/        # API FastAPI & Logique métier
 ├── frontend/       # Interface Utilisateur (Statique, léger)
 ├── data/           # Persistance (Volume Docker)
 ├── docker/         # Configuration conteneurisation
 └── docs/           # Documentation technique & RSE
-```
+
 ##📜 Licence
 Projet Open Source - Licence MIT. Conçu pour le Challenge Numih France.
 #### 2. Documentation d'Architecture
 **Fichier :** `docs/architecture.md` (Nouveau)
 Un schéma simple vaut 1000 mots pour un jury technique.
+```
 
-```markdown
 # Architecture Technique GreenCare
 
 ## Vue d'ensemble
@@ -128,7 +135,7 @@ graph TD
     API -.->|Intégration Future| ERP[ERP dh (Numih)]
 ```
 
-##Flux de Données
+## Flux de Données
 Authentification : Délégable au SSO de l'hôpital (OpenID Connect) - Non implémenté dans le POC (Simulation par Rôle).
 
 Saisie : Les données d'actions sont validées par Pydantic avant insertion.
@@ -141,34 +148,4 @@ Les outils BI consomment l'API CSV.
 
 L'annuaire consomme l'API FHIR.
 
-#### 3. Le Script de Démo (Votre antisèche)
-**Fichier :** `docs/demo_script.md` (Nouveau)
-Suivez ce script à la lettre pendant votre présentation.
 
-```markdown
-# 🎤 Script de Démo - 3 Minutes Chrono
-
-## 1. Introduction (30s)
-* **Contexte :** "Bonjour. Aujourd'hui, l'hôpital produit des milliers de tonnes de déchets et consomme énormément d'énergie, mais les soignants n'ont aucun outil pour agir."
-* **Solution :** "Voici GreenCare. Ce n'est pas une boîte à idées, c'est le module de pilotage RSE opérationnel connecté à l'écosystème Numih."
-
-## 2. Démo Live (1m30s)
-* **Action 1 (Dashboard) :** "Je suis Directeur. Je me connecte au Dashboard."
-    * *Montrer `dashboard.html`.*
-    * "En un coup d'œil, je vois mes gains réels : kWh, Euros, CO2. Ces données sont calculées en temps réel."
-* **Action 2 (Interopérabilité) :** "Ces chiffres ne sont pas fermés. Je peux les exporter en un clic pour mon rapport annuel."
-    * *Cliquer sur 'Export CSV' et ouvrir le fichier.*
-* **Action 3 (Terrain) :** "Maintenant, je suis Infirmier de nuit au Bloc (Changer rôle menu déroulant)."
-    * *Aller sur `index.html`.*
-    * "Je vois les actions proposées. L'action 'Écrans Bloc Nuit' est pertinente. Je vote."
-    * *Cliquer sur 'Pour'. Montrer le score qui change.*
-    * "Mon vote a plus de poids car je suis soignant (+1.5)."
-
-## 3. Technique & Conclusion (1m)
-* **Architecture :** "Sous le capot, c'est du Numérique Responsable."
-    * "Pas de framework lourd, mode sombre natif."
-    * "Architecture Docker souveraine, prête pour vos datacenters HDS."
-    * "Compatible FHIR pour l'annuaire."
-* **Clôture :** "GreenCare est la brique manquante pour transformer les intentions RSE en résultats mesurables dans l'offre **dh**. Merci."
-
-## Fichier : docs/qa_checklist.md (Nouveau) Pour être sûr de ne rien oublier avant de zipper.
